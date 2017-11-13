@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'user/show'
+
   get 'ngos/index'
 
   get 'ngos/show'
