@@ -1,0 +1,20 @@
+.banner{
+  background-size: cover !important;
+  margin-top: 10px;
+  position: relative;
+  .content  {
+    p {
+        position: absolute;
+        bottom: 1%;
+        right: 40%;
+    }
+    h1 {
+        position: center;
+    }
+}
+}
+
+.container{
+    margin-top: 20px;
+    margin-left: 20px;
+}
