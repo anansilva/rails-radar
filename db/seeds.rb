@@ -31,12 +31,27 @@ end
     lat: Faker::Address.latitude,
     lng: Faker::Address.longitude
     )
+
   # Seed NGO Types
   first = Type.first.id
   last = Type.last.id
 
   rand(1..3).times do
-     ngo.ngo_types.create(type_id: (rand(first..last).to_i))
+    ngo.ngo_types.create(type_id: (rand(first..last).to_i))
+  end
+
+  # Create donations
+
+  rand(0..2).times do
+    Donation.create(
+      user_id: 1,
+      ngo_id: ngo.id,
+      items: "This is a list of items",
+      schedule: Date.new,
+      comments: "This is a comment",
+      address: ngo.address,
+      type_id: ngo.types.sample.id
+      )
   end
 
   ngo.reload
