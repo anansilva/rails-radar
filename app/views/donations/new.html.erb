@@ -1,0 +1,37 @@
+
+  <div class="banner" style="background-image: url('http://newsinfo.inquirer.net/files/2015/04/bike2.jpg'); width:100%;height:75vh;">  
+    <div class="content">
+    <h1>The Bike Project</h1>
+    <p>The Bike Project relies heavily on bicycle donations to keep running successfully. Most of the bikes donated to us are donated in turn to asylum seekers and refugees, and some of them are sold in our online shop, to ensure our sustainability. It’s a nice little cycle…see what we did there?</p>
+  </div>
+</div>
+
+
+<div class="container" >
+	<p>Select item you want to donate: </p>
+	<form action="/action_page.php">
+  <select name="Items">
+    <option value="furniture">Furniture</option>
+    <option value="books">Books</option>
+    <option value="bycicles">Bycicles</option>
+    <option value="clothes">Clothes</option>
+  </select>
+  <br><br>
+  <input type="submit">
+</form>
+</div>
+  <div id="map"></div>
+
+  <script>
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 52.5206, lng: 13.4098},
+      scrollwheel: false,
+      zoom: 8
+    });
+  }
+</script>
+
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzER7O10ZOUp7FloJzMe2r8X1GIQhgt7Q&callback=initMap">
+</script>
