@@ -4,6 +4,6 @@ class NgosController < ApplicationController
   end
 
   def show
-    @ngo = Ngo.new
+    @ngo = Ngo.find(params[:id])
   end
 end
