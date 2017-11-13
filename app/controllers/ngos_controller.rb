@@ -3,5 +3,6 @@ class NgosController < ApplicationController
   end
 
   def show
+    @ngo = Ngo.new
   end
 end
