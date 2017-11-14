@@ -46,6 +46,7 @@
           top: 20%;
           right: 3%;
           width: 15%;
+          max-width: 90px;
           opacity: 0.8;
         }
       }
@@ -82,32 +83,34 @@
   @media only screen and (min-width: 720px) {
     .profile {
       position: relative;
-    }
-
-    .self {
-      position: fixed;
-      top: 10%;
-      left: 1%;
-      z-index: 1;
-      width:15%;
-    }
-
-    .donations {
-      position: absolute;
-      left: 20%;
-      right: 20%;
-      .scrollbar {
-        width: 100%;
+      .self {
+        position: fixed;
+        top: 10%;
+        left: 1%;
+        z-index: 1;
+        width:15%;
       }
-    }
+      .donations {
+        position: absolute;
+        left: 20%;
+        right: 20%;
+        .scrollbar {
+          width: 100%;
+          .card {
+            img {
+              width: 100px;
+            }
+          }
+        }
+      }
 
-
-    .messages {
-      position: fixed;
-      top: 10%;
-      right: 1%;
-      z-index: 1;
-      width:15%;
+      .messages {
+        position: fixed;
+        top: 10%;
+        right: 1%;
+        z-index: 1;
+        width:15%;
+      }
     }
   }
 }
