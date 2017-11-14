@@ -2,16 +2,19 @@
   <div class="row">
     <div class="col-xs-12">
       <% @ngos.each do |ngo| %>
-      <% # if ngo.photos.nill? %>
-      <% photo_url = image_path 'card_default.jpg' %>
+        <% # if ngo.photos.nill? %>
+        <% photo_url = image_path 'card_default.jpg' %>
+        <% # else %>
+        <% #photo_url = cl_image_path ngos.photos.first.path, height: 500, width: 400, crop: :fit  %>
+        <% #end %>
 
-      <% # else %>
-
-      <% #photo_url = cl_image_path ngos.photos.first.path, height: 500, width: 400, crop: :fit  %>
-      <% #end %>
+        <% string = "card " %>
+        <% ngo.types.each do |type| %>
+        <% string += type.name.downcase + " " %>
+        <% end %>
 
       <%= link_to ngo_path(id: ngo.id) do %>
-      <div class="card" style="background-image: url('<%= photo_url %>')">
+      <div class="<%= string %>"" style="background-image: url('<%= photo_url %>')">
         <div class="card-description">
           <%= ngo.name.upcase %>
         </div>
