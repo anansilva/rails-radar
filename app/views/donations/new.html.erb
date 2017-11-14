@@ -1,25 +1,40 @@
 <div class="donations-new">
-  <div class="banner" style="background-image: url('http://newsinfo.inquirer.net/files/2015/04/bike2.jpg'); width:100%;height:75vh;">  
+  <div class="banner" >
     <div class="content">
       <h1>The Bike Project</h1>
       <p>The Bike Project relies heavily on bicycle donations to keep running successfully. Most of the bikes donated to us are donated in turn to asylum seekers and refugees, and some of them are sold in our online shop, to ensure our sustainability. It’s a nice little cycle…see what we did there?</p>
     </div>
   </div>
 
-
-  <div class="container" >
-   <p>Select item you want to donate: </p>
-   <form action="/action_page.php">
-    <select name="Items">
-      <option value="furniture">Furniture</option>
-      <option value="books">Books</option>
-      <option value="bycicles">Bycicles</option>
-      <option value="clothes">Clothes</option>
-    </select>
-    <br><br>
-    <input type="submit">
-  </form>
-</div>
-<div id="map"></div>
-<%= render "layouts/map" %>
-</div>
+  <div class="grid">
+    <div class="container">
+      <div class="box">
+        <h2>Confirm your Donation</h2>
+        <p>You have selected following items to donate: </p>
+        <form action="/action_page.php">
+          <select name="Items">
+            <option value="furniture">Furniture</option>
+            <option value="books">Books</option>
+            <option value="bycicles">Bycicles</option>
+            <option value="clothes">Clothes</option>
+          </select>
+          <a class='btn btn-success' href='#'>Confirm</a>
+          <p><br>You can drop off your donation here: <a><small>(show on map)</small></a><br>
+            <small>Rua do Sao Paulo 563<br>76452 Honululu</small></p>
+            <a class='btn btn-primary' href='#'>Drop OFF</a>
+            <br>
+            <p><br>Or we pick it up at your place<br><small>Please enter your adress here:<br></small><form><small><br>
+              <input type="text" street="street" id="street/no" value="Street/ No." /><br>
+              <input type="integer" name="postalcode" id="postalcode" value="ZIP code" /><br>
+              <input name="city" id="city" value="city"></input> </small>
+            </form></p>
+            <a class='btn btn-primary' href='#'>Pick UP</a>
+          </form>
+        </div>
+      </div>
+      <div class="donations-map">
+        <div id="map"></div>
+      </div>
+    </div>
+    <%= render "layouts/map" %>
+  </div>
