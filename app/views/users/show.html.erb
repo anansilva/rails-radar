@@ -6,30 +6,55 @@
       <% else %>
         <% avatar_url = "http://placehold.it/200x200"%>
       <% end %>
+      <div class="you">
+          <h3>You:</h3>
       <div class="self">
         <%= image_tag avatar_url, class: 'profile-img' %>
 
 
         <h4> <%= @user.first_name %> <%= @user.last_name %> </h4>
       </div>
-
-      <div class="donations">
-        <div class="scrollbar">
-          <% @donations.each do |d| %>
-            <div class="card">
-              <h4><%= d.items %></h4>
-              <p><%= d.comments %></p>
-              <div class="type"><%= cl_image_tag("#{Type.find(d.type_id).name}_png") %></div>
-            </div>
-          <% end %>
-
-        </div>
       </div>
 
       <div class="messages">
-        Messages
+        <h3>On your radar:</h3>
+        <ul>
+          <li>Message example</li>
+          <li>Message Example</li>
+        </ul>
       </div>
 
+      <div class="big donations">
+        <h3>Your donations:</h3>
+        <div class="list">
+          <% @donations.each do |d| %>
+          <div class="card">
+            <div class="card-body">
+              <div class="content">
+                <%= link_to d.ngo do %>
+                <h4><%= d.ngo.name %></h4>
+                <% end %>
+                <p><%= d.items %></p>
+              </div>
+              <%= image_tag("icons/#{Type.find(d.type_id).name.downcase}.png", class: "type") %>
+            </div>
+
+            <% case d.status  %>
+            <% when 'done' %>
+              <% notice = " done"  %>
+            <% when 'failed' %>
+              <% notice = " failed"  %>
+            <% else %>
+                <% notice = ' ' %>
+            <% end %>
+
+            <div class="card-notice<%= notice %>">
+
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -22,33 +22,62 @@
   }
 
   .donations {
-
-    .scrollbar {
+      margin-top: 0px;
+      padding-top: 0px;
+    .list {
+      padding: 0px;
+      margin: 0px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      width: 100%;
     }
-
     .card {
-      background-color: rgb(252, 252, 252);
-      padding: 0.8em;
-      margin: 0px 0px 10px 0px;
-      border: 1px solid #DDD;
-      border-radius: 10px;
-      word-wrap: break-word;
-      overflow: hidden;
-      position: relative;
-      width: 95%;
-      .type {
-        img {
-          position: absolute;
-          top: 20%;
-          right: 3%;
-          width: 15%;
+      display: flex;
+      padding: 0px;
+      width: 100%;
+      div {
+        margin: 0px;
+        padding: 0px;
+      }
+      .card-body {
+        padding: 0.8em;
+        background-color: rgb(249, 249, 249);
+        border: 0.8px solid #DDD;
+        border-radius: 2px;
+        word-wrap: break-word;
+        overflow: hidden;
+
+        flex: 1 1 80%;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .content {
+          margin: 0px;
+        }
+
+        .type {
           max-width: 90px;
           opacity: 0.8;
         }
+      }
+
+      .card-notice {
+        max-width:15px;
+        flex: 0 1 20px;
+        background-color: $blue;
+      }
+
+      .done {
+        background-color: $green;
+
+      }
+
+      .failed {
+        background-color: $red;
       }
     }
   }
@@ -57,60 +86,29 @@
 
   }
 
-  @media only screen and (min-width: 320px) and (max-width: 719px) {
+  @media (min-width: 720px) {
     .profile {
-      display: grid;
-      grid-template-columns: 2;
-      grid-template-rows: 2;
+      display: flex;
+      justify-content: center;
     }
-
-    .self {
-      grid-row: 1 / span 1;
-      grid-column: 1 / span 1;
-    }
-
-    .donations {
-      grid-row: 2 / span 1;
-      grid-column: 1 / span 2;
+    .you {
+      position: fixed;
+      top: 8%;
+      left: 2%;
+      width: 15%
     }
 
     .messages {
-      grid-row: 1 / span 1;
-      grid-column: 2 / span 1;
+      position: fixed;
+      top: 8%;
+      right: 2%;
+      width: 15%
     }
-  }
 
-  @media only screen and (min-width: 720px) {
-    .profile {
+    .big {
       position: relative;
-      .self {
-        position: fixed;
-        top: 10%;
-        left: 1%;
-        z-index: 1;
-        width:15%;
-      }
-      .donations {
-        position: absolute;
-        left: 20%;
-        right: 20%;
-        .scrollbar {
-          width: 100%;
-          .card {
-            img {
-              width: 100px;
-            }
-          }
-        }
-      }
-
-      .messages {
-        position: fixed;
-        top: 10%;
-        right: 1%;
-        z-index: 1;
-        width:15%;
-      }
+      padding: 30px 0px !important;
+      width: 70%;
     }
   }
 }
