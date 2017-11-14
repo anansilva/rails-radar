@@ -2,7 +2,7 @@
 <div class="ngo-show-page">
   <div class="container">
 
-    <%= render 'layouts/ngo_banner' %>
+    <%= render 'shared/ngo_banner' %>
     <div class="grid-container">
       <div class="grid">
         <div class="description">
@@ -12,48 +12,64 @@
         </div>
 
         <div class="ngo-icons">
-          <% @ngo.types.each do |type| %>
 
-              <%= image_tag("icons/#{type.name.downcase}.png") %>
+          <% @ngo.types.each do |type| %>
+          <p><%= "#{type.name.downcase}" %></p>
+          <%= image_tag("icons/#{type.name.downcase}.png", :width=>30, :crop=>"fill") %>
 
           <% end %>
 
         </div>
 
 
-<% if user_signed_in? %>
+        <% if user_signed_in? %>
         <div class="ngo-donate">
           <div class="text-center">
             <p>Make your donation here, <%= current_user.first_name %></p>
-            <div class="donate-form">
-              <%= form_tag(new_donation_path(id: @ngo.id), method: :get) do  %>
-              <%= select_tag :type_id, options_for_select(Type.all.pluck(:name, :id)), prompt: "Choose the type of donation you are giving" %>
-              <%= text_field_tag :date, nil, :class => "datepicker", :value => "Drop off/Pick up Date" %>
-              <%= submit_tag "Donate", class: "btn btn-primary"%>
-              <% end %>
+            <div class="row">
+              <div class="donate-form form-group">
+                <%= form_tag(new_donation_path(id: @ngo.id), method: :get, class: "donation-form") do  %>
+                <!-- <div class="col-xs-3"> -->
+
+                  <%#= select_tag :type_id, options_for_select(@ngo.types.map{|t| t = t.name}), prompt: "Choose the type of donation you are giving", class: "form-control" %>
+<% @ngo.types.each do |t| %>
+                  <%= radio_button_tag(:type_id, t.name) %>
+                  <%= label_tag(:type_id, t.name) %>
+                  <% end %>
+                  <!-- </div> -->
+                  <!-- <div class="col-xs-3"> -->
+                    <%= text_field_tag :date, nil, :class => "datepicker", :value => "Drop off/Pick up Date" %>
+                    <!-- </div> -->
+
+                    <%= submit_tag "Donate", class: "btn btn-primary"%>
+
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% end %>
+
+
+
+            <div class="ngo-map">
+              <div id="ngo-show-map"></div>
             </div>
           </div>
         </div>
-  <% end %>
-
-        <div class="ngo-map">
-          <div id="ngo-show-map"></div>
-        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<script>
-  function initMap() {
-    var map = new google.maps.Map(document.getElementById('ngo-show-map'), {
-      center: {lat: 52.5206, lng: 13.4098},
-      scrollwheel: false,
-      zoom: 8
-    });
-  }
-</script>
+    <script>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('ngo-show-map'), {
+          center: {lat: 52.5206, lng: 13.4098},
+          scrollwheel: false,
+          zoom: 8
+        });
+      }
+    </script>
 
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzER7O10ZOUp7FloJzMe2r8X1GIQhgt7Q&callback=initMap">
-</script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzER7O10ZOUp7FloJzMe2r8X1GIQhgt7Q&callback=initMap">
+  </script>
