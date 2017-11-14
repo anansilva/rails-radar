@@ -3,25 +3,49 @@
   <div class="container">
 
     <%= render 'layouts/ngo_banner' %>
+    <div class="grid-container">
+      <div class="grid">
+        <div class="description">
+          <p><b><%= @ngo.name %></b></p>
+          <p><%= @ngo.address %></p>
+          <p>Founded in 1989 in Lisbon, Portugal by Manuel and Ana. We want to help give food to those in need.</p>
+        </div>
 
-    <div class="grid">
-      <div class="description">
-        <p><b><%= @ngo.name %></b></p>
-        <p><%= @ngo.address %></p>
-        <p>Founded in 1989 in Lisbon, Portugal by Manuel and Ana. We want to help give food to those in need.</p>
-      </div>
-      <div class="ngo-map">
-        <div id="map"></div>
-      </div>
-      <div class="ngo-icons">
-        <p><b>We are looking for:</b></p>
-        <%= image_tag 'images/box.svc' %>
+        <div class="ngo-icons">
+          <p>We are looking for:</p>
 
-      </div>
-      <div class="ngo-donate">
-        <p>Donate Form</p>
+        </div>
+        <div class="ngo-donate">
+          <div class="text-center">
+            <p>Make your donation</p>
+            <div class="donate-form">
+              <%= simple_form_for(@donation) do |f| %>
+              <%= f.input :type_id, collection: Type.all, prompt: "Choose the type of donation you are giving" %>
+              <%= f.text_field :date, :class => "datepicker", :value => "Drop off/Pick up Date" %>
+              <%= f.submit "Donate", class: "btn btn-primary"%>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="ngo-map">
+          <div id="ngo-show-map"></div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<%= render 'layouts/map' %>
+
+<script>
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById('ngo-show-map'), {
+      center: {lat: 52.5206, lng: 13.4098},
+      scrollwheel: false,
+      zoom: 8
+    });
+  }
+</script>
+
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzER7O10ZOUp7FloJzMe2r8X1GIQhgt7Q&callback=initMap">
+</script>

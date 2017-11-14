@@ -1,5 +1,5 @@
 class DonationsController < ApplicationController
-	def new
+	def create
 		@donation = Donation.new
 	end
 end

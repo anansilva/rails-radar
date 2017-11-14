@@ -9,5 +9,6 @@ class NgosController < ApplicationController
 
   def show
     @ngo = Ngo.find(params[:id])
+    @donation = Donation.new
   end
 end
