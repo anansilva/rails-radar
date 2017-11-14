@@ -29,6 +29,8 @@ end
 
 # Seeding
 gem 'faker'
+
+# Search
 gem 'pg_search'
 
 # Image management
