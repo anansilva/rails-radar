@@ -19,17 +19,45 @@
       }
     }
   }
-  @media (min-width: 500px){
+
+  .grid{
+    padding-top: 10px;
+
+    .description{
+      border: 1px solid #e4e4e4 !important;
+    }
+    .ngo-donate{
+      border: 1px solid #e4e4e4 !important;
+      .donate-form{
+        padding: 10px;
+        .btn-primary{
+          padding: 10px;
+          margin: 10px;
+        }
+      }
+
+    }
+    .ngo-map{
+      border: 1px solid #e4e4e4 !important;
+    }
+    .ngo-icons{
+      border: 1px solid #e4e4e4 !important;
+    }
+  }
+  .grid-container{
+    display: flex;
+    position: relative;
+  }
+  @media only screen  and (min-width : 768px){
     .grid{
       display: grid;
       grid-template-columns: 350px 1fr 1fr;
       grid-template-rows: 50% 50%;
-      padding-top: 10px;
+
 
       .description{
         grid-row: 1/ span 1;
         grid-column: 1/ span 2;
-        border: 1px solid #e4e4e4 !important;
         padding: 15px;
         margin-right: 7px;
       }
@@ -37,17 +65,16 @@
       .ngo-donate{
         grid-row: 1/ span 2;
         grid-column: 3/ span 1;
-        border: 1px solid #e4e4e4 !important;
         height: 100vh;
-        position: sticky !important;
         padding: 15px;
+        top: 10px;
+        position: sticky !important;
 
       }
 
       .ngo-map{
         grid-row: 2/ span 1;
         grid-column: 1/ span 1;
-        border: 1px solid #e4e4e4 !important;
         padding: 15px;
         margin-right: 7px;
         margin-top: 7px;
@@ -56,11 +83,29 @@
       .ngo-icons{
         grid-row: 2/ span 1;
         grid-column: 2/ span 1;
-        border: 1px solid #e4e4e4 !important;
         padding: 15px;
         margin-top: 7px;
         margin-right: 7px;
       }
+    }
+  }
+
+  @media only screen and (min-width: 320px){
+    .description{
+      margin-bottom: 10px;
+      padding: 10px;
+    }
+    .ngo-donate{
+      margin-bottom: 10px;
+      padding: 10px;
+    }
+    .ngo-icons{
+      margin-bottom: 10px;
+      padding: 10px;
+    }
+    .ngo-map{
+      margin-bottom: 10px;
+      padding: 10px;
     }
   }
 }
