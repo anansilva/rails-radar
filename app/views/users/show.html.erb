@@ -1,7 +1,11 @@
 <div class="prfl-page">
   <div class="container">
     <div class="profile">
-    <% avatar_url = @user.facebook_picture_url.gsub('square', 'large') || "http://placehold.it/200x200"%>
+      <% if @user.facebook_picture_url %>
+        <% avatar_url = @user.facebook_picture_url.gsub('square', 'large') %>
+      <% else %>
+        <% avatar_url = "http://placehold.it/200x200"%>
+      <% end %>
       <div class="self">
         <%= image_tag avatar_url, class: 'profile-img' %>
 
