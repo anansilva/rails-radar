@@ -2,6 +2,8 @@ class NgosController < ApplicationController
   def index
     if params[:query]
       @ngos = Ngo.search_by_name_and_address(params[:query])
+    elsif params[:type]
+      @ngos = Ngo.includes(:types).where(:types => {name: params[:type]})
     else
       @ngos = Ngo.all
     end
