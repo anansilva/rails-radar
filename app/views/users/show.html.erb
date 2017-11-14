@@ -1,12 +1,12 @@
 <div class="prfl-page">
   <div class="container">
-    <center>Profile</center>
     <div class="profile">
-
+    <% avatar_url = @user.facebook_picture_url.gsub('square', 'large') || "http://placehold.it/200x200"%>
       <div class="self">
-        <%= image_tag 'logo', class: 'profile-img' %>
+        <%= image_tag avatar_url, class: 'profile-img' %>
 
-        <h3> <%= @user.first_name %> <%= @user.last_name %> </h3>
+
+        <h4> <%= @user.first_name %> <%= @user.last_name %> </h4>
       </div>
 
       <div class="donations">
