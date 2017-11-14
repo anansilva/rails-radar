@@ -28,6 +28,8 @@ end
 
 # Seeding
 gem 'faker'
+
+# Search bar
 gem 'algoliasearch-rails'
 
 # Image management
