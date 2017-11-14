@@ -8,13 +8,20 @@
 
 puts "Creating Seeds"
 
+# Destroy previous data
+puts "Destroying current database in 5 seconds, press CTRL + C to cancel"
+sleep(5)
+Donation.destroy_all
+NgoType.destroy_all
+Ngo.destroy_all
+Type.destroy_all
+
 # Create 1 Test user
 User.create( first_name: "Test", last_name: "User", email: "example@example.com", password: "secret")
 
 
 # Seeding Types
-Type.destroy_all
-
+puts "Seeding types..."
 type_list = ['Food', 'Clothes', 'Electronics', 'Furniture', 'Bycicles', 'Books', 'Other']
 type_list.each do |t|
   unless Type.find_by(name: t)
@@ -23,6 +30,9 @@ type_list.each do |t|
 end
 
 # Seeding NGOs
+
+puts "Seeding Ngos..."
+status_list = ['done', 'scheduled', 'failed']
 
 10.times do
   ngo = Ngo.create(
@@ -44,13 +54,14 @@ end
 
   rand(0..2).times do
     Donation.create(
-      user_id: 1,
+      user_id: User.first.id,
       ngo_id: ngo.id,
       items: "This is a list of items",
       schedule: Date.new,
       comments: "This is a comment",
       address: ngo.address,
-      type_id: ngo.types.sample.id
+      type_id: ngo.types.sample.id,
+      status: status_list.sample
       )
   end
 
