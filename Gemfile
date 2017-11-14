@@ -28,9 +28,7 @@ end
 
 # Seeding
 gem 'faker'
-
-# Search bar
-gem 'algoliasearch-rails'
+gem 'pg_search'
 
 # Image management
 gem 'cloudinary'
