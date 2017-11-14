@@ -15,7 +15,6 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
-gem 'devise'
 gem 'bootstrap-datepicker-rails'
 
 group :development, :test do
@@ -37,3 +36,7 @@ gem 'pg_search'
 gem 'cloudinary'
 gem 'carrierwave'
 
+# Profile management
+gem 'omniauth-facebook'
+gem 'devise'
+gem 'omniauth'
