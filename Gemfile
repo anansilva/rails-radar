@@ -28,3 +28,9 @@ end
 
 # Seeding
 gem 'faker'
+gem 'algoliasearch-rails'
+
+# Image management
+gem 'cloudinary'
+gem 'carrierwave'
+
