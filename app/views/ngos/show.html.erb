@@ -12,21 +12,29 @@
         </div>
 
         <div class="ngo-icons">
-          <p>We are looking for:</p>
+          <% @ngo.types.each do |type| %>
+
+              <%= image_tag("icons/#{type.name.downcase}.png") %>
+
+          <% end %>
 
         </div>
+
+
+<% if user_signed_in? %>
         <div class="ngo-donate">
           <div class="text-center">
-            <p>Make your donation</p>
+            <p>Make your donation here, <%= current_user.first_name %></p>
             <div class="donate-form">
-              <%= simple_form_for(@donation) do |f| %>
-              <%= f.input :type_id, collection: Type.all, prompt: "Choose the type of donation you are giving" %>
-              <%= f.text_field :date, :class => "datepicker", :value => "Drop off/Pick up Date" %>
-              <%= f.submit "Donate", class: "btn btn-primary"%>
+              <%= form_tag(new_donation_path(id: @ngo.id), method: :get) do  %>
+              <%= select_tag :type_id, options_for_select(Type.all.pluck(:name, :id)), prompt: "Choose the type of donation you are giving" %>
+              <%= text_field_tag :date, nil, :class => "datepicker", :value => "Drop off/Pick up Date" %>
+              <%= submit_tag "Donate", class: "btn btn-primary"%>
               <% end %>
             </div>
           </div>
         </div>
+  <% end %>
 
         <div class="ngo-map">
           <div id="ngo-show-map"></div>
