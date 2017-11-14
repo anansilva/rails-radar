@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
   # get 'users/:id', to: 'users#show'
 
-  resources :ngos, only: ['index', 'show']
+  resources :ngos, only: ['index', 'show'] do
+    member do
+      resources :donations, only: ['new', 'create', 'update', 'patch']
+    end
+  end
 
 
   devise_for :users, controllers: {
   sessions: 'users/sessions'
   }
+
+
 
 
   root to: 'ngos#index'
