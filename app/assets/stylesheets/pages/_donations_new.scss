@@ -7,13 +7,46 @@
     .content  {
       p {
         position: absolute;
-        bottom: 1%;
+        bottom: 30%;
         right: 40%;
       }
       h1 {
         position: center;
       }
-      position: center;
     }
   }
+
+.grid{
+      display: grid;
+      grid-template-columns: 400px 1fr 1fr 1fr;
+      grid-template-rows: 50% 25% 25%;
+      padding-top: 10px;
+      padding-bottom: 10px;
+  .container{
+  grid-row: 1 / span 1;
+  grid-column: 3 / span 1;
+  margin-left: 50px;
+}
+.box {
+    width: 450px;
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 0;
+    margin-top: 10px;
+}
+   
+
+  .donations-map{
+   grid-row: 1 / span 1;
+   grid-column: 1 / span 2;
+   border: 1px solid #e4e4e4 !important;
+   padding: 15px;
+   flex: 0 0 450px;
+   margin-right: 2px;
+   margin-top: 7px;
+   width: 100%;
+   height: 150%;
+   position: sticky !important;
+ }
+}
 }
