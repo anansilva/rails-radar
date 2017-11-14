@@ -25,9 +25,13 @@
 
     .description{
       border: 1px solid #e4e4e4 !important;
+      background-color: white;
+
     }
     .ngo-donate{
       border: 1px solid #e4e4e4 !important;
+      background-color: white;
+
       .donate-form{
         padding: 10px;
         .btn-primary{
@@ -39,9 +43,17 @@
     }
     .ngo-map{
       border: 1px solid #e4e4e4 !important;
+      background-color: white;
+
     }
     .ngo-icons{
       border: 1px solid #e4e4e4 !important;
+      background-color: white;
+      #ngo-icon-name{
+        opacity: 0.6;
+        font-size: 14px;
+        font-weight: lighter;
+      }
     }
   }
   .grid-container{
