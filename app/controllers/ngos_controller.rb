@@ -1,6 +1,10 @@
 class NgosController < ApplicationController
   def index
-    @ngos = Ngo.all
+    if params[:query]
+      @ngos = Ngo.search_by_name_and_address(params[:query])
+    else
+      @ngos = Ngo.all
+    end
   end
 
   def show

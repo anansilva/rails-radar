@@ -29,3 +29,9 @@ end
 
 # Seeding
 gem 'faker'
+gem 'pg_search'
+
+# Image management
+gem 'cloudinary'
+gem 'carrierwave'
+

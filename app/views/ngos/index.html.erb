@@ -3,45 +3,14 @@
     <h1>FIND NGO</h1>
     <div class="container">
       <div id="search-bar">
-        <div class="input-group stylish-input-group">
-          <input type="text" class="form-control"  placeholder="What would you like to donate?" >
-          <span class="input-group-addon">
-            <button type="submit">
-              <span class="glyphicon glyphicon-search"></span>
-            </button>
-          </span>
-        </div>
+        <%= render 'layouts/searchbar' %>
       </div>
     </div>
   </div>
 </div>
 
 <div class="main-index-container">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-      <% @ngos.each do |ngo| %>
-        <% # if ngo.photos.nill? %>
-        <% photo_url = image_path 'card_default.jpg' %>
-
-        <% # else %>
-
-        <% #photo_url = cl_image_path ngos.photos.first.path, height: 500, width: 400, crop: :fit  %>
-        <% #end %>
-
-        <%= link_to ngo_path(id: ngo.id) do %>
-        <div class="card" style="background-image: url('<%= photo_url %>')">
-          <div class="card-description">
-            <%= ngo.name.upcase %>
-          </div>
-        </div>
-        <% end %>
-
-      <% end %>
-
-      </div>
-    </div>
-  </div>
+  <%= render 'layouts/card' %>
   <div id="map"></div>
 </div>
 
