@@ -20,6 +20,13 @@
     }
   }
 
+  .border-line{
+    border: 0;
+    height: 1px;
+    background: #333;
+    opacity: 0.3;
+  }
+
   .grid{
     padding-top: 10px;
 
@@ -34,6 +41,9 @@
 
       .donate-form{
         padding: 10px;
+        .label-type-tag{
+        padding: 10px;
+        }
         .btn-primary{
           padding: 10px;
           margin: 10px;
@@ -97,6 +107,8 @@
         padding: 15px;
         margin-top: 7px;
         margin-right: 7px;
+        padding-left: 30px;
+        padding-right: 30px;
       }
     }
   }
