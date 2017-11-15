@@ -11,6 +11,7 @@ class NgosController < ApplicationController
     @hash = Gmaps4rails.build_markers(@ngos) do |ngo, marker|
       marker.lat ngo.lat
       marker.lng ngo.lng
+      # marker.picture ({ url: "https://i.imgur.com/B0Q6ghF.png"})
     end
   end
 

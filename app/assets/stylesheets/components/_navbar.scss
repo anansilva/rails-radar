@@ -79,3 +79,15 @@
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
 }
+
+.logonav {
+  display: flex;
+  a {
+    font-size: 1.5em;
+    color: $orange;
+    font-weight: 300;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
