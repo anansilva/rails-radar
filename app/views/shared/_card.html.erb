@@ -3,7 +3,7 @@
     <div class="col-xs-12">
       <% @ngos.each do |ngo| %>
         <% # if ngo.photos.nill? %>
-        <% photo_url = image_path 'card_default.jpg' %>
+        <% photo_url = image_path ngo.photo %>
         <% # else %>
         <% #photo_url = cl_image_path ngos.photos.first.path, height: 500, width: 400, crop: :fit  %>
         <% #end %>
