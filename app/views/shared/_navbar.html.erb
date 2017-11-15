@@ -14,7 +14,7 @@
     <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
 
     <!-- Links when logged in -->
-    <%= link_to "Donations", "users/#{current_user.id}", class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "Donations", { controller: 'users', action: 'show', id: current_user.id }, class: "navbar-wagon-item navbar-wagon-link" %>
 
     <!-- Avatar with dropdown menu -->
     <div class="navbar-wagon-item">
