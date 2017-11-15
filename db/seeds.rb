@@ -15,6 +15,10 @@ Donation.destroy_all
 NgoType.destroy_all
 Ngo.destroy_all
 Type.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!(Ngo.table_name)
+ActiveRecord::Base.connection.reset_pk_sequence!(NgoType.table_name)
+ActiveRecord::Base.connection.reset_pk_sequence!(Donation.table_name)
+ActiveRecord::Base.connection.reset_pk_sequence!(Type.table_name)
 
 # Create 1 Test user
 User.create( first_name: "Test", last_name: "User", email: "example@example.com", password: "secret")
@@ -22,7 +26,7 @@ User.create( first_name: "Test", last_name: "User", email: "example@example.com"
 
 # Seeding Types
 puts "Seeding types..."
-type_list = ['Food', 'Clothes', 'Electronics', 'Furniture', 'Bycicles', 'Books', 'Other']
+type_list = ['Food', 'Clothes', 'Electronics', 'Furniture', 'Bicycles', 'Books', 'Other']
 type_list.each do |t|
   unless Type.find_by(name: t)
     Type.create(name: t)
@@ -38,6 +42,7 @@ status_list = ['done', 'scheduled', 'failed']
   ngo = Ngo.create(
     name: Faker::Company.name,
     address: Faker::Address.street_name,
+    description: Faker::Lorem.paragraph(2),
     lat: Faker::Address.latitude,
     lng: Faker::Address.longitude
     )

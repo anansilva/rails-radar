@@ -6,18 +6,26 @@
     <div class="grid-container">
       <div class="grid">
         <div class="description">
+          <p><b>Who we are:</b></p>
           <p><b><%= @ngo.name %></b></p>
           <p><%= @ngo.address %></p>
-          <p>Founded in 1989 in Lisbon, Portugal by Manuel and Ana. We want to help give food to those in need.</p>
+          <hr class = "border-line"/>
+          <p><b>Who we help:</b></p>
+          <p><%= @ngo.description %></p>
         </div>
 
         <div class="ngo-icons">
 
+          <p><b>What we're looking for:</b></p>
           <% @ngo.types.each do |type| %>
           <%= image_tag("icons/#{type.name.downcase}.png", :width=>50, :crop=>"fill", class: "text-center") %>
           <p id="ngo-icon-name"><%= "#{type.name.downcase}" %></p>
-
           <% end %>
+
+          <hr class = "border-line"/>
+
+          <p><b>Our history:</b></p>
+          <p><%= @ngo.description %></p>
 
         </div>
 
@@ -34,7 +42,7 @@
                   <%#= select_tag :type_id, options_for_select(@ngo.types.map{|t| t = t.name}), prompt: "Choose the type of donation you are giving", class: "form-control" %>
                   <% @ngo.types.each do |t| %>
                   <%= radio_button_tag(:type_id, t.name) %>
-                  <%= label_tag(:type_id, t.name) %>
+                  <%= label_tag(:type_id, t.name, class: "label-type-tag") %>
                   <% end %>
                   <!-- </div> -->
                   <!-- <div class="col-xs-3"> -->
