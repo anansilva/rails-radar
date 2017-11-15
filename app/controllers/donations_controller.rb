@@ -8,7 +8,7 @@ class DonationsController < ApplicationController
 		@donation = Donation.new(donation_params)
 		@donation.ngo = Ngo.find(params[:ngo_id])
 		@donation.user = current_user
-		
+
 		if @donation.save
 			redirect_to controller: "users", action: "show", id: "#{current_user.id}"
 		else

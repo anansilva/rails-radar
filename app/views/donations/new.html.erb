@@ -1,4 +1,4 @@
-
+raise 
 <div class="donations-new">
   <div class="container" >
     <%= render "shared/ngo_banner" %>
@@ -10,11 +10,11 @@
         </div>
         <div class="box">
           <h2>Confirm your Donation</h2>
-          <p>You have selected following items to donate: </p>
+          <p>And provide us following information please:</p>
           <%= simple_form_for [@ngo, @donation] do |f|  %>
           <%= f.input :items  %>
           <%= f.input :comments %>
-          <%= f.input :type_id,  as: :hidden, input_html: { value: "#{params[:type_id]}" }%>
+          <%= f.input :type_id, as: :hidden, input_html: { value: "#{params[:type_id]}" }%>
           <%= f.input :schedule, input_html: { value: "#{params[:date]}"} %>
           <%= f.input :address,  as: :hidden, input_html: { value: "#{[@ngo.address]}" } %>
           <%= f.submit %>
