@@ -28,12 +28,12 @@
             <p>Make your donation here<%= current_user.nil? ? " " : "," + current_user.first_name %></p>
             <div class="row">
               <div class="donate-form form-group">
-                <%= form_tag(new_donation_path(id: @ngo.id), method: :get, class: "donation-form") do  %>
+                <%= form_tag(new_ngo_donation_path(ngo_id: @ngo.id), method: :get, class: "donation-form") do  %>
                 <!-- <div class="col-xs-3"> -->
 
                   <%#= select_tag :type_id, options_for_select(@ngo.types.map{|t| t = t.name}), prompt: "Choose the type of donation you are giving", class: "form-control" %>
                   <% @ngo.types.each do |t| %>
-                  <%= radio_button_tag(:type_id, t.name) %>
+                  <%= radio_button_tag(:type_id, t.id) %>
                   <%= label_tag(:type_id, t.name) %>
                   <% end %>
                   <!-- </div> -->
