@@ -14,9 +14,13 @@
         <% end %>
 
       <%= link_to ngo_path(id: ngo.id) do %>
-      <div class="<%= string %>"" style="background-image: url('<%= photo_url %>')">
-        <div class="card-description">
-          <%= ngo.name.upcase %>
+      <div class="<%= string %>">
+        <div class="card-image" style="background-image: url('<%= photo_url %>')">
+
+        </div>
+        <div class="card-content">
+          <h5><%= ngo.name.upcase %></h5>
+          <p><%= ngo.description %>
         </div>
       </div>
       <% end %>
