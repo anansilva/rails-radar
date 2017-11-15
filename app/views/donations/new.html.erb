@@ -11,36 +11,30 @@
         <div class="box">
           <h2>Confirm your Donation</h2>
           <p>You have selected following items to donate: </p>
-          <form action="/action_page.php">
-            <%= params[:type_id] %>
-            <input type="text" description="description" id="description" placeholder="Item description" />
-
-            <p><br>You can drop off your donation here: <br><a><small>(show on map)</small></a><br>
-              <small>Rua do Sao Paulo 563<br>76452 Honululu</small></p>
-              <a class='btn btn-primary' href='#' onclick="alert('Drop OFF confirmed!')">Drop OFF</a>
-              <br>
-              <p><br>Or we pick it up at your place<br><small>Please enter your adress here:<br></small><form><small><br>
-                <input type="text" street="street" id="street/no" placeholder="Street/ No." /><br>
-                <input type="integer" name="postalcode" id="postalcode" placeholder="ZIP code" /><br>
-                <input name="city" id="city" placeholder="city"></input></small></form><br><small>And enter your preferred time:</small></p>
-                <input type="time" name="usr_time"><br>
-                <br><a class='btn btn-primary' href='#' onclick="alert('Pick UP confirmed!')">Pick UP</a>
-              </form>
+          <%= simple_form_for [@ngo, @donation] do |f|  %>
+          <%= f.input :items  %>
+          <%= f.input :comments %>
+          <%= f.input :type_id,  as: :hidden, input_html: { value: "#{params[:type_id]}" }%>
+          <%= f.input :schedule, input_html: { value: "#{params[:date]}"} %>
+          <%= f.input :address,  as: :hidden, input_html: { value: "#{[@ngo.address]}" } %>
+          <%= f.submit %>
+          <% end %>
+          
             </div>
           </div>
         </div>
       </div>
     </div>
-      <script>
-  function initMap() {
-    var map = new google.maps.Map(document.getElementById('donation-show-map'), {
-      center: {lat: 52.5206, lng: 13.4098},
-      scrollwheel: false,
-      zoom: 8
-    });
-  }
-</script>
+    <script>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('donation-show-map'), {
+          center: {lat: 52.5206, lng: 13.4098},
+          scrollwheel: false,
+          zoom: 8
+        });
+      }
+    </script>
 
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzER7O10ZOUp7FloJzMe2r8X1GIQhgt7Q&callback=initMap">
-</script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzER7O10ZOUp7FloJzMe2r8X1GIQhgt7Q&callback=initMap">
+  </script>
