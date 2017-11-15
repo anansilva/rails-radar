@@ -4,6 +4,12 @@ class DonationsController < ApplicationController
 	def new
 		@ngo = Ngo.find(params[:ngo_id])
 		@donation = Donation.new
+
+		# We want to enter date
+		# we picked the date on the previous view
+		# these values are stored in the param (rather in a complicated way :( )
+		# Mary wants to access these value
+		# and store them individually 
 	end
 
 	def create

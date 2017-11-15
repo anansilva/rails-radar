@@ -14,7 +14,7 @@ class NgosController < ApplicationController
       # marker.picture ({ url: "https://i.imgur.com/B0Q6ghF.png"})
     end
   end
-
+ 
   def show
     @ngo = Ngo.find(params[:id])
     @donation = Donation.new

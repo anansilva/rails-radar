@@ -10,13 +10,14 @@
         </div>
         <div class="box">
           <h2>Confirm your Donation</h2>
-          <p>You have selected following items to donate: </p>
+          <p>And provide us following information please:</p>
           <%= simple_form_for [@ngo, @donation] do |f|  %>
+          <%= Type.find(params[:type_id]).name %>
           <%= f.input :items  %>
           <%= f.input :comments %>
-          <%= f.input :type_id,  as: :hidden, input_html: { value: "#{params[:type_id]}" }%>
-          <%= f.input :schedule, input_html: { value: "#{params[:date]}"} %>
-          <%= f.input :address,  as: :hidden, input_html: { value: "#{[@ngo.address]}" } %>
+          <%= f.input :type_id, as: :hidden, input_html: { value: params[:type_id] }%>
+          <%= f.input :schedule, as: :string, input_html: { :class => "datepicker", :value => params[:date] }  %>
+          <%= f.input :address, input_html: { value: @ngo.address } %>
           <%= f.submit %>
           <% end %>
           
