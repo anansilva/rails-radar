@@ -37,14 +37,22 @@ end
 
 puts "Seeding Ngos..."
 status_list = ['done', 'scheduled', 'failed']
+lat_array = [38.836946, 38.736946, 38.636946, 38.536946 ]
+lng_array = [-9.342685 , -9.342685  , -9.142685 , -9.042685 ]
+ngo_photo_array = ['http://res.cloudinary.com/dsmei8zni/image/upload/v1510750337/1.jpg', 'http://res.cloudinary.com/dsmei8zni/image/upload/v1510750336/2.jpg', 'http://res.cloudinary.com/dsmei8zni/image/upload/v1510750320/3.jpg', 'http://res.cloudinary.com/dsmei8zni/image/upload/v1510750303/4.jpg']
 
 10.times do
   ngo = Ngo.create(
     name: Faker::Company.name,
     address: Faker::Address.street_name,
     description: Faker::Lorem.paragraph(2),
-    lat: Faker::Address.latitude,
-    lng: Faker::Address.longitude
+    # lat: Faker::Address.latitude,
+    # lng: Faker::Address.longitude
+
+    lat: lat_array.shuffle.sample,
+    lng: lng_array.shuffle.sample,
+
+    photo: ngo_photo_array.shuffle.sample,
     )
 
   # Seed NGO Types
