@@ -42,7 +42,7 @@
       .donate-form{
         padding: 10px;
         .label-type-tag{
-        padding: 10px;
+          padding: 10px;
         }
         .btn-primary{
           padding: 10px;
@@ -59,10 +59,21 @@
     .ngo-icons{
       border: 1px solid #e4e4e4 !important;
       background-color: white;
-      #ngo-icon-name{
-        opacity: 0.6;
-        font-size: 14px;
-        font-weight: lighter;
+
+      .icon-box{
+        display: flex;
+
+        .ngo-icon-item{
+          padding: 10px;
+          padding-right: 30px;
+
+
+          #ngo-icon-name{
+            opacity: 0.6;
+            font-size: 14px;
+            font-weight: lighter;
+          }
+        }
       }
     }
   }

@@ -31,6 +31,7 @@ gem 'faker'
 
 # Search
 gem 'pg_search'
+gem 'bootstrap_form'
 
 # Image management
 gem 'cloudinary'
@@ -40,3 +41,11 @@ gem 'carrierwave'
 gem 'omniauth-facebook'
 gem 'devise'
 gem 'omniauth'
+
+# Maps
+gem 'coffee-rails'
+gem 'gmaps4rails'
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end

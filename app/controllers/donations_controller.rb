@@ -1,4 +1,6 @@
 class DonationsController < ApplicationController
+  before_action :authenticate_user!
+
 	def new
 		@ngo = Ngo.find(params[:ngo_id])
 		@donation = Donation.new
@@ -11,6 +13,7 @@ class DonationsController < ApplicationController
 	end
 
 	def create
+    @ngo = Ngo.find(params[:ngo_id])
 		@donation = Donation.new(donation_params)
 		@donation.ngo = Ngo.find(params[:ngo_id])
 		@donation.user = current_user

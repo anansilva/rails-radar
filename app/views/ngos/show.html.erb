@@ -17,10 +17,16 @@
         <div class="ngo-icons">
 
           <p><b>What we're looking for:</b></p>
-          <% @ngo.types.each do |type| %>
-          <%= image_tag("icons/#{type.name.downcase}.png", :width=>50, :crop=>"fill", class: "text-center") %>
-          <p id="ngo-icon-name"><%= "#{type.name.downcase}" %></p>
-          <% end %>
+          <div class="icon-box">
+
+            <% @ngo.types.each do |type| %>
+            <div class="ngo-icon-item" class="text-center">
+              <%= image_tag("icons/#{type.name.downcase}.png", :width=>50, :crop=>"fill", class: "text-center") %>
+              <p id="ngo-icon-name"><%= "#{type.name.downcase}" %></p>
+            </div>
+            <% end %>
+
+          </div>
 
           <hr class = "border-line"/>
 
