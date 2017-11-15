@@ -7,6 +7,11 @@ class NgosController < ApplicationController
     else
       @ngos = Ngo.all
     end
+
+    @hash = Gmaps4rails.build_markers(@ngos) do |ngo, marker|
+      marker.lat ngo.lat
+      marker.lng ngo.lng
+    end
   end
 
   def show
