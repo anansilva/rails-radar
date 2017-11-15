@@ -14,25 +14,25 @@
         <div class="ngo-icons">
 
           <% @ngo.types.each do |type| %>
-          <p><%= "#{type.name.downcase}" %></p>
-          <%= image_tag("icons/#{type.name.downcase}.png", :width=>30, :crop=>"fill") %>
+          <%= image_tag("icons/#{type.name.downcase}.png", :width=>50, :crop=>"fill", class: "text-center") %>
+          <p id="ngo-icon-name"><%= "#{type.name.downcase}" %></p>
 
           <% end %>
 
         </div>
 
 
-        <% if user_signed_in? %>
+
         <div class="ngo-donate">
           <div class="text-center">
-            <p>Make your donation here, <%= current_user.first_name %></p>
+            <p>Make your donation here<%= current_user.nil? ? " " : "," + current_user.first_name %></p>
             <div class="row">
               <div class="donate-form form-group">
                 <%= form_tag(new_donation_path(id: @ngo.id), method: :get, class: "donation-form") do  %>
                 <!-- <div class="col-xs-3"> -->
 
                   <%#= select_tag :type_id, options_for_select(@ngo.types.map{|t| t = t.name}), prompt: "Choose the type of donation you are giving", class: "form-control" %>
-<% @ngo.types.each do |t| %>
+                  <% @ngo.types.each do |t| %>
                   <%= radio_button_tag(:type_id, t.name) %>
                   <%= label_tag(:type_id, t.name) %>
                   <% end %>
@@ -42,13 +42,13 @@
                     <!-- </div> -->
 
                     <%= submit_tag "Donate", class: "btn btn-primary"%>
-
                     <% end %>
+
                   </div>
                 </div>
               </div>
             </div>
-            <% end %>
+
 
 
 
