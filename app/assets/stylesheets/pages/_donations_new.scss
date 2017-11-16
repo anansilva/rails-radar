@@ -33,9 +33,14 @@
     .box {
       width: 730px;
       padding: 10px;
-      border: 2px solid gray;
+      border: 1px solid gray;
       margin: 0;
       margin-left: 10px;
+      background-color: #ffffff;
+      h2 {
+        font-size: 28px;
+        font-weight: bold;
+      }
  }
    .grid-container{
     display: flex;

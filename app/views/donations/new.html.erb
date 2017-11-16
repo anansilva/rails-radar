@@ -10,20 +10,28 @@
         </div>
         <div class="box">
           <h2>Confirm your Donation</h2>
-          <p>And provide us following information please:</p>
           <%= simple_form_for [@ngo, @donation] do |f|  %>
           <%= Type.find(params[:type_id]).name %>
-          <%= f.input :items  %>
+          <p><br>And provide us following information please:</p>
+          <%= f.input :items %>
           <%= f.input :comments %>
           <%= f.input :type_id, as: :hidden, input_html: { value: params[:type_id] }%>
           <%= f.input :schedule, as: :string, input_html: { :class => "datepicker", :value => params[:date] }  %>
+          <p><strong>Please select preferred time to Drop Off/ Pick Up</strong></p>
+
+          <div class="input-group bootstrap-timepicker timepicker">
+            <input id="timepicker1" type="text" class="form-control input-small">
+            <span class="input-group-addon" value="From 9am to 7pm"><i class="glyphicon glyphicon-time" ></i></span>
+          </div><br>
+
+
           <%= f.input :address, input_html: { value: @ngo.address } %>
-          <%= f.submit %>
+          <%= f.submit class: 'btn btn-primary'%>
           <% end %>
 
-            </div>
-          </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
 
