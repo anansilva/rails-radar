@@ -10,12 +10,13 @@ class ConversationsController < ApplicationController
       @conversation = Conversation.create!(conversation_params)
     end
 
-    render json: { conversation_id: @conversation.id }
+    render json: { conversation_id: @conversation.ids[0] }
   end
 
   def show
     @conversation = Conversation.find(params[:id])
     @receiver = interlocutor(@conversation)
+    @receiver.class.to_s.downcase == "ngo" ? @sender = @conversation.user : @sender = @conversation.ngo
     @messages = @conversation.messages
     @message = Message.new
   end
@@ -29,7 +30,7 @@ class ConversationsController < ApplicationController
       if @ngo.nil?
         conversation.user
       else
-        conversation.ngoe
+        conversation.ngo
       end
     end
 end

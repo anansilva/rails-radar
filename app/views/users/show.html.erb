@@ -1,3 +1,5 @@
+<% javascript_include_tag "user" %>
+
 <div class="prfl-page">
   <div class="container">
     <div class="profile">
@@ -17,11 +19,18 @@
       </div>
 
       <div class="messages">
-        <h3>On your radar:</h3>
-        <ul>
-          <li>Message example</li>
-          <li>Message Example</li>
-        </ul>
+        <table>
+        <% Ngo.all.each_with_index do |ngo, index| %>
+            <tr>
+              <td><%= index +=1 %></td>
+              <td><%= ngo.name %></td>
+              <td>
+                <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
+                            "data-uid" => current_user.id, "data-nid" => ngo.id %>
+              </td>
+            </tr>
+        <% end %>
+      </table>
       </div>
 
       <div class="big donations">
