@@ -12,7 +12,7 @@ class NgosController < ApplicationController
 
     if @ngo.save
       @user.update(ngo_id: @ngo.id)
-      redirect_to controller: "users", action: "show", id: "#{current_user.id}"
+      redirect_to controller: "ngos", action: "dashboard", id: "#{@ngo.id}"
     else
       render :new
     end
@@ -42,6 +42,11 @@ class NgosController < ApplicationController
       marker.lat ngo.lat
       marker.lng ngo.lng
     end
+  end
+
+  def dashboard
+    @ngo = Ngo.find(params[:id])
+    @donations = @ngo.donations.reverse
   end
 
   private
