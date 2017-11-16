@@ -7,8 +7,6 @@ class NgosController < ApplicationController
   def create
     @user = current_user
     @ngo = Ngo.new(ngo_params)
-    @ngo.lat = Geocoder.coordinates((params[:ngo][:address])).first
-    @ngo.lng = Geocoder.coordinates((params[:ngo][:address])).last
 
     if @ngo.save
       @user.update(ngo_id: @ngo.id)
@@ -28,8 +26,8 @@ class NgosController < ApplicationController
     end
 
     @hash = Gmaps4rails.build_markers(@ngos) do |ngo, marker|
-      marker.lat ngo.lat
-      marker.lng ngo.lng
+      marker.lat ngo.latitude
+      marker.lng ngo.longitude
       # marker.picture ({ url: "https://i.imgur.com/B0Q6ghF.png"})
     end
   end
@@ -39,8 +37,8 @@ class NgosController < ApplicationController
     @donation = Donation.new
 
     @hash = Gmaps4rails.build_markers(@ngo) do |ngo, marker|
-      marker.lat ngo.lat
-      marker.lng ngo.lng
+      marker.lat ngo.latitude
+      marker.lng ngo.longitude
     end
   end
 
