@@ -1,10 +1,5 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'json'
+require 'open-uri'
 
 puts "Creating Seeds"
 
@@ -35,27 +30,26 @@ end
 
 # Seeding NGOs
 
+
+ngo_photo_array = ['http://res.cloudinary.com/dsmei8zni/image/upload/v1510750337/1.jpg', 'http://res.cloudinary.com/dsmei8zni/image/upload/v1510750336/2.jpg', 'http://res.cloudinary.com/dsmei8zni/image/upload/v1510750320/3.jpg', 'http://res.cloudinary.com/dsmei8zni/image/upload/v1510750303/4.jpg', 'http://res.cloudinary.com/dsmei8zni/image/upload/v1510846456/5.jpg', 'http://res.cloudinary.com/dsmei8zni/image/upload/v1510846441/6.jpg', 'http://res.cloudinary.com/dsmei8zni/image/upload/v1510846432/7.jpg', 'http://res.cloudinary.com/dsmei8zni/image/upload/v1510846278/8.jpg']
+
+
+uri = URI.parse("https://projects.propublica.org/nonprofits/api/v2/search.json?q=propublica")
+data = JSON.parse(uri.read)
+
 puts "Seeding Ngos..."
 status_list = ['done', 'scheduled', 'failed']
-lat_array = [38.836946, 38.736946, 38.636946, 38.536946 ]
-lng_array = [-9.342685 , -9.342685  , -9.142685 , -9.042685 ]
-ngo_photo_array = ['http://res.cloudinary.com/dsmei8zni/image/upload/v1510750337/1.jpg', 'http://res.cloudinary.com/dsmei8zni/image/upload/v1510750336/2.jpg', 'http://res.cloudinary.com/dsmei8zni/image/upload/v1510750320/3.jpg', 'http://res.cloudinary.com/dsmei8zni/image/upload/v1510750303/4.jpg']
-
-10.times do
-  ngo = Ngo.create(
-    name: Faker::Company.name,
-    address: Faker::Address.street_name,
+orgs = data["organizations"]
+(0..20).each do |i|
+  ngo_hash = orgs[i]
+  ngo = Ngo.create!({
+    name: ngo_hash["name"],
+    address: ngo_hash["name"] +" "+ ngo_hash["city"],
     description: Faker::Lorem.paragraph(2),
-    # lat: Faker::Address.latitude,
-    # lng: Faker::Address.longitude
+    photo: ngo_photo_array.shuffle.sample
+  })
 
-    lat: lat_array.shuffle.sample,
-    lng: lng_array.shuffle.sample,
-
-    photo: ngo_photo_array.shuffle.sample,
-    )
-
-  # Seed NGO Types
+   # Seed NGO Types
   first = Type.first.id
   last = Type.last.id
 
@@ -80,3 +74,6 @@ ngo_photo_array = ['http://res.cloudinary.com/dsmei8zni/image/upload/v1510750337
 
   ngo.reload
 end
+puts "finished!"
+
+
