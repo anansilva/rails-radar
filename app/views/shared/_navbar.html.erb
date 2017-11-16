@@ -17,6 +17,11 @@
     <%= link_to "Donations", { controller: 'users', action: 'show', id: current_user.id }, class: "navbar-wagon-item navbar-wagon-link" %>
     <%#= link_to "NGO Dashboard", { controller: 'ngos', action: 'dashboard', id: current_user.ngo.id }, class: "navbar-wagon-item navbar-wagon-link" %>
 
+    <% if current_user.ngo_id.nil? %>
+    <%= link_to "Register your NGO", { controller: 'ngos', action: 'new' }, class: "navbar-wagon-item navbar-wagon-link"%>
+    <% else %>
+    <%= link_to "Your NGO", { controller: 'ngos', action: 'dashboard', id: current_user.ngo_id }, class: "navbar-wagon-item navbar-wagon-link"%>
+    <% end %>
 
     <!-- Avatar with dropdown menu -->
     <div class="navbar-wagon-item">
