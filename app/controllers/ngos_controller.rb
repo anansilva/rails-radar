@@ -2,14 +2,17 @@ class NgosController < ApplicationController
   def new
     @user = current_user
     @ngo = Ngo.new
+    type_name
   end
 
   def create
     @user = current_user
-    @ngo = NGO.new(ngo_params)
-    @ngo.user = current_user
+    @ngo = Ngo.new(ngo_params)
+    @ngo.lat = Geocoder.coordinates((params[:ngo][:address])).first
+    @ngo.lng = Geocoder.coordinates((params[:ngo][:address])).last
 
     if @ngo.save
+      @user.update(ngo_id: @ngo.id)
       redirect_to controller: "users", action: "show", id: "#{current_user.id}"
     else
       render :new
@@ -37,9 +40,17 @@ class NgosController < ApplicationController
     @donation = Donation.new
   end
 
+  def type_name
+    types = Type.all
+    @names = []
+    types.each do |type|
+    @names << type.name
+    end
+  end
+
   private
 
   def ngo_params
-    params.require(:ngo).permit(:name, :address, :lat, :lng)
+    params.require(:ngo).permit(:user_id, :name, :address, :types, :lat, :lng)
   end
 end

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # get 'users/:id', to: 'users#show'
 
-  resources :ngos, only: ['index', 'show'] do
+  resources :ngos, only: ['index', 'show', 'new', 'create'] do
       resources :donations, only: ['new', 'create', 'update', 'patch']
   end
 
