@@ -9,17 +9,9 @@
 
   <!-- Right Navigation -->
 
-  <!-- Search Bar -->
-  <div class="navbar-wagon-right-box">
-    <%= form_tag(ngos_path, method: :get) do %>
-    <%= text_field_tag :query %>
-    <%= submit_tag "search" %>
-    <% end %>
-  </div>
-
-
-  <% if user_signed_in? %>
   <div class="navbar-wagon-right hidden-xs hidden-sm">
+    <%= render 'shared/searchbar_navbar' %>
+  <% if user_signed_in? %>
     <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
 
     <!-- Links when logged in -->

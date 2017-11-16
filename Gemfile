@@ -31,7 +31,6 @@ gem 'faker'
 
 # Search
 gem 'pg_search'
-gem 'bootstrap_form'
 
 # Image management
 gem 'cloudinary'
