@@ -14,9 +14,15 @@ class NgosController < ApplicationController
       # marker.picture ({ url: "https://i.imgur.com/B0Q6ghF.png"})
     end
   end
- 
+
   def show
     @ngo = Ngo.find(params[:id])
     @donation = Donation.new
+
+    @hash = Gmaps4rails.build_markers(@ngo) do |ngo, marker|
+      marker.lat ngo.lat
+      marker.lng ngo.lng
+    end
   end
+
 end

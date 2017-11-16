@@ -1,4 +1,4 @@
-<div id="map"></div>
+<div id="ngo-show-map"></div>
 
 
 <% content_for(:after_js) do %>
@@ -202,7 +202,7 @@
 
 
     handler.buildMap({
-      internal: { id: 'map' }
+      internal: { id: 'ngo-show-map' }
     }, function() {
       markers = handler.addMarkers(<%= raw @hash.to_json %>);
       handler.bounds.extendWith(markers);
@@ -217,3 +217,4 @@
     });
  </script>
 <% end %>
+
