@@ -6,7 +6,7 @@
     <div class="grid-container">
       <div class="grid">
         <div class="donation-map">
-          <div id="donation-show-map"></div>
+          <%= render "shared/ngo_show_map" %>
         </div>
         <div class="box">
           <h2>Confirm your Donation</h2>
@@ -20,22 +20,10 @@
           <%= f.input :address, input_html: { value: @ngo.address } %>
           <%= f.submit %>
           <% end %>
-          
+
             </div>
           </div>
         </div>
       </div>
     </div>
-    <script>
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('donation-show-map'), {
-          center: {lat: 52.5206, lng: 13.4098},
-          scrollwheel: false,
-          zoom: 8
-        });
-      }
-    </script>
 
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzER7O10ZOUp7FloJzMe2r8X1GIQhgt7Q&callback=initMap">
-  </script>
