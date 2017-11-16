@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   def create
     @conversation = Conversation.find(params[:conversation_id])
     @message = @conversation.messages.build(message_params)
-    @message.sender = @receiver.class.to_s.downcase
+    @sender = @message.sender
     @message.save!
 
     @path = conversation_path(@conversation)
@@ -13,6 +13,6 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:body)
+    params.require(:message).permit(:body, :sender)
   end
 end

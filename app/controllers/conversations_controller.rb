@@ -1,3 +1,4 @@
+
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
 
@@ -27,7 +28,7 @@ class ConversationsController < ApplicationController
     end
 
     def interlocutor(conversation)
-      if @ngo.nil?
+      if params[:ngo_id].nil?
         conversation.user
       else
         conversation.ngo

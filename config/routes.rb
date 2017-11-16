@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   resources :ngos, only: ['index', 'show', 'new', 'create'] do
       resources :donations, only: ['new', 'create', 'update', 'patch']
+      resources :conversations do
+        resources :messages
+      end
   end
 
 
@@ -21,5 +24,5 @@ Rails.application.routes.draw do
 
   get 'users/conversations/:id', controller: 'conversations', action: 'show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get 'ngo/:id/dashboard', to: 'ngos#dashboard'
+  get 'ngos/:id/dashboard', to: 'ngos#dashboard'
 end
