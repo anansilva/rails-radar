@@ -56,3 +56,5 @@ class NgosController < ApplicationController
     params.require(:ngo).permit(:user_id, :name, :address, :types, :lat, :lng)
   end
 end
+
+
