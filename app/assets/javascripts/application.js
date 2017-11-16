@@ -4,6 +4,8 @@
 //= require bootstrap-datepicker
 //= require underscore
 //= require gmaps/google
+//= require chat
+//= require private_pub
 //= require_tree .
 
 $(document).ready(function() {

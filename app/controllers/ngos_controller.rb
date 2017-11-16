@@ -2,7 +2,6 @@ class NgosController < ApplicationController
   def new
     @user = current_user
     @ngo = Ngo.new
-    type_name
   end
 
   def create
@@ -38,13 +37,10 @@ class NgosController < ApplicationController
   def show
     @ngo = Ngo.find(params[:id])
     @donation = Donation.new
-  end
 
-  def type_name
-    types = Type.all
-    @names = []
-    types.each do |type|
-    @names << type.name
+    @hash = Gmaps4rails.build_markers(@ngo) do |ngo, marker|
+      marker.lat ngo.lat
+      marker.lng ngo.lng
     end
   end
 

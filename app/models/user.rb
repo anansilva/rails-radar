@@ -7,6 +7,8 @@ class User < ApplicationRecord
   # Database relationships
   has_many :donations
   has_one :ngo
+  has_many :conversations
+
 
   # Validations
   validates :email, presence: true, uniqueness: true

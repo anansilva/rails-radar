@@ -68,23 +68,11 @@
 
 
             <div class="ngo-map">
-              <div id="ngo-show-map"></div>
+              <%= render 'shared/ngo_show_map' %>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <script>
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('ngo-show-map'), {
-          center: {lat: 52.5206, lng: 13.4098},
-          scrollwheel: false,
-          zoom: 8
-        });
-      }
-    </script>
 
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzER7O10ZOUp7FloJzMe2r8X1GIQhgt7Q&callback=initMap">
-  </script>

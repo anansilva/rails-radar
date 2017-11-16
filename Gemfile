@@ -50,3 +50,7 @@ gem 'geocoder'
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
+
+# Chat
+gem 'private_pub'
+gem 'thin'
