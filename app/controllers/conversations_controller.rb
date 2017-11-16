@@ -11,7 +11,7 @@ class ConversationsController < ApplicationController
       @conversation = Conversation.create!(conversation_params)
     end
 
-    render json: { conversation_id: @conversation.ids[0] }
+    render json: { conversation_id: @conversation.id }
   end
 
   def show
