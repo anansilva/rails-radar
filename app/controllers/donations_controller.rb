@@ -32,3 +32,5 @@ def donation_params
   params.require(:donation).permit(:type_id, :schedule, :address, :items, :comments)
 end
 end
+
+

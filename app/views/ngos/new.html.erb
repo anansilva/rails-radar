@@ -1,0 +1,15 @@
+<% content_for :title, "Create an NGO" %>
+
+
+ <div class="box">
+  <h2>Register your NGO</h2>
+  <%= simple_form_for [@ngo] do |f|  %>
+  <%= f.input :name  %>
+  <%= f.input :address %>
+  <%= f.input :description %>
+  <%= f.association :types, as: :check_boxes %>
+  <%= f.input :photo, placeholder: "url" %>
+  <%= f.submit %>
+  <% end %>
+
+</div>

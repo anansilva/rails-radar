@@ -1,11 +1,10 @@
-
 <% javascript_include_tag "user" %>
 
 <div class="prfl-page">
   <div class="container">
     <div class="profile">
-      <% if @user.facebook_picture_url %>
-        <% avatar_url = @user.facebook_picture_url.gsub('square', 'large') %>
+      <% if @ngo.photo %>
+        <% avatar_url = @ngo.photo.gsub('square', 'large') %>
       <% else %>
         <% avatar_url = "http://placehold.it/200x200"%>
       <% end %>
@@ -15,19 +14,20 @@
         <%= image_tag avatar_url, class: 'profile-img' %>
 
 
-        <h4> <%= @user.first_name %> <%= @user.last_name %> </h4>
+        <h4> <%= @ngo.name %> </h4>
       </div>
       </div>
 
       <div class="messages">
-        <table>
-        <% Ngo.all.each_with_index do |ngo, index| %>
+        <h3>Messages:</h3>
+        <table class="table">
+        <% User.all.each_with_index do |user, index| %>
             <tr>
               <td><%= index +=1 %></td>
-              <td><%= ngo.name %></td>
+              <td><%= user.first_name %> <%= user.last_name %></td>
               <td>
                 <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
-                            "data-uid" => current_user.id, "data-nid" => ngo.id %>
+                            "data-uid" => user.id, "data-nid" => @ngo.id %>
               </td>
             </tr>
         <% end %>
@@ -41,9 +41,7 @@
           <div class="card">
             <div class="card-body">
               <div class="content">
-                <%= link_to d.ngo do %>
-                <h4><%= d.ngo.name %></h4>
-                <% end %>
+                <h4><%= d.user.first_name %></h4>
                 <p><%= d.items %></p>
               </div>
               <%= image_tag("icons/#{Type.find(d.type_id).name.downcase}.png", class: "type") %>

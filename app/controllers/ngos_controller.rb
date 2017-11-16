@@ -1,4 +1,21 @@
 class NgosController < ApplicationController
+  def new
+    @user = current_user
+    @ngo = Ngo.new
+  end
+
+  def create
+    @user = current_user
+    @ngo = Ngo.new(ngo_params)
+
+    if @ngo.save
+      @user.update(ngo_id: @ngo.id)
+      redirect_to controller: "ngos", action: "dashboard", id: "#{@ngo.id}"
+    else
+      render :new
+    end
+  end
+
   def index
     if params[:query]
       @ngos = Ngo.search_by_name_and_address(params[:query])
@@ -9,8 +26,8 @@ class NgosController < ApplicationController
     end
 
     @hash = Gmaps4rails.build_markers(@ngos) do |ngo, marker|
-      marker.lat ngo.lat
-      marker.lng ngo.lng
+      marker.lat ngo.latitude
+      marker.lng ngo.longitude
       # marker.picture ({ url: "https://i.imgur.com/B0Q6ghF.png"})
     end
   end
@@ -20,9 +37,22 @@ class NgosController < ApplicationController
     @donation = Donation.new
 
     @hash = Gmaps4rails.build_markers(@ngo) do |ngo, marker|
-      marker.lat ngo.lat
-      marker.lng ngo.lng
+      marker.lat ngo.latitude
+      marker.lng ngo.longitude
     end
   end
 
+  def dashboard
+    @user = current_user
+    @ngo = Ngo.find(params[:id])
+    @donations = @ngo.donations.reverse
+  end
+
+  private
+
+  def ngo_params
+    params.require(:ngo).permit(:user_id, :name, :address, :types, :lat, :lng)
+  end
 end
+
+
