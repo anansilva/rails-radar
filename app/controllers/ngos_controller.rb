@@ -44,6 +44,11 @@ class NgosController < ApplicationController
     end
   end
 
+  def dashboard
+    @ngo = Ngo.find(params[:id])
+    @donations = @ngo.donations.reverse
+  end
+
   private
 
   def ngo_params

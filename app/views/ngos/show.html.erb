@@ -39,7 +39,7 @@
 
         <div class="ngo-donate">
           <div class="text-center">
-            <p>Make your donation here<%= current_user.nil? ? " " : "," + current_user.first_name %></p>
+            <p>Make your donation here<%= current_user.first_name.nil? ? " " : "," + current_user.first_name unless current_user.nil? %></p>
             <div class="row">
               <div class="donate-form form-group">
                 <%= form_tag(new_ngo_donation_path(ngo_id: @ngo.id), method: :get, class: "donation-form") do  %>

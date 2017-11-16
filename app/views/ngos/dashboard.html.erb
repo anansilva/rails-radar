@@ -1,0 +1,70 @@
+<h1>My NGO Dashboard</h1>
+<% javascript_include_tag "user" %>
+
+<div class="prfl-page">
+  <div class="container">
+    <div class="profile">
+      <% if @ngo.photo %>
+        <% avatar_url = @ngo.photo.gsub('square', 'large') %>
+      <% else %>
+        <% avatar_url = "http://placehold.it/200x200"%>
+      <% end %>
+      <div class="you">
+          <h3>You:</h3>
+      <div class="self">
+        <%= image_tag avatar_url, class: 'profile-img' %>
+
+
+        <h4> <%= @ngo.name %> </h4>
+      </div>
+      </div>
+
+      <div class="messages">
+        <table>
+        <% User.all.each_with_index do |user, index| %>
+            <tr>
+              <td><%= index +=1 %></td>
+              <td><%= user.first_name %> <%= user.last_name %></td>
+              <td>
+                <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
+                            "data-uid" => @ngo.id, "data-nid" => current_user.id %>
+              </td>
+            </tr>
+        <% end %>
+      </table>
+      </div>
+
+      <div class="big donations">
+        <h3>Your donations:</h3>
+        <div class="list">
+          <% @donations.each do |d| %>
+          <div class="card">
+            <div class="card-body">
+              <div class="content">
+                <%= link_to d.user do %>
+                <h4><%= d.user.first_name %></h4>
+                <% end %>
+                <p><%= d.items %></p>
+              </div>
+              <%= image_tag("icons/#{Type.find(d.type_id).name.downcase}.png", class: "type") %>
+            </div>
+
+            <% case d.status  %>
+            <% when 'done' %>
+              <% notice = " done"  %>
+            <% when 'failed' %>
+              <% notice = " failed"  %>
+            <% else %>
+                <% notice = ' ' %>
+            <% end %>
+
+            <div class="card-notice<%= notice %>">
+
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
