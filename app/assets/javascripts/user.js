@@ -9,10 +9,10 @@ var ready = function () {
     $('.start-conversation').click(function (e) {
         e.preventDefault();
 
-        var sender_id = $(this).data('sid');
-        var recipient_id = $(this).data('rip');
+        var ngo_id = $(this).data('nid');
+        var user_id = $(this).data('uid');
 
-        $.post("/conversations", { sender_id: sender_id, recipient_id: recipient_id }, function (data) {
+        $.post("/conversations", { ngo_id: ngo_id, user_id: user_id }, function (data) {
             chatBox.chatWith(data.conversation_id);
         });
     });
