@@ -2,18 +2,23 @@
     var id = "<%= @conversation.id %>";
     var chatbox = $("#chatbox_" + id + " .chatboxcontent");
 
-    var user_id = "<%= @conversation.user.id %>"
-    var ngo_id = "<%= @conversation.ngo.id %>"
+    var sender_class = "<%= j @message.sender %>";
+    var receiver_class = $('meta[name=class]').attr("content");
 
     chatbox.append("<%= j render( partial: @message ) %>");
-    chatbox.children().last().addClass("self");
     chatbox.scrollTop(chatbox[0].scrollHeight);
 
-    <% if @sender == @receiver.class.to_s.downcase %>
+    if(sender_class == receiver_class) {
+      chatBox.chatWith(id);
+        chatbox.children().last().removeClass("other").addClass("self");
+    }
+
+
+    if(sender_class != receiver_class){
       chatBox.chatWith(id);
         chatbox.children().last().removeClass("self").addClass("other");
       chatbox.scrollTop(chatbox[0].scrollHeight);
         chatBox.notify();
-    <% end %>
+    }
 
 <% end %>

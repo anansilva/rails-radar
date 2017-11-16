@@ -12,7 +12,7 @@
 }
 
 .chatboxhead {
-    background: #666;
+    background-color: $orange;
     color: white;
     padding: 0.5rem;
     overflow: hidden;
@@ -81,6 +81,8 @@
 }
 
 .self .chatboxmessagecontent {
+      background-color: $orange;
+    color: white;
     order: 1;
     border-bottom-right-radius: 0;
 }

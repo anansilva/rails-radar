@@ -1,4 +1,3 @@
-<h1>My NGO Dashboard</h1>
 <% javascript_include_tag "user" %>
 
 <div class="prfl-page">
@@ -11,7 +10,7 @@
       <% end %>
       <div class="you">
           <h3>You:</h3>
-      <div class="self">
+      <div class="selfy">
         <%= image_tag avatar_url, class: 'profile-img' %>
 
 
@@ -20,14 +19,15 @@
       </div>
 
       <div class="messages">
-        <table>
+        <h3>Messages:</h3>
+        <table class="table">
         <% User.all.each_with_index do |user, index| %>
             <tr>
               <td><%= index +=1 %></td>
               <td><%= user.first_name %> <%= user.last_name %></td>
               <td>
                 <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
-                            "data-uid" => @ngo.id, "data-nid" => current_user.id %>
+                            "data-uid" => user.id, "data-nid" => @ngo.id %>
               </td>
             </tr>
         <% end %>
@@ -41,9 +41,7 @@
           <div class="card">
             <div class="card-body">
               <div class="content">
-                <%= link_to d.user do %>
                 <h4><%= d.user.first_name %></h4>
-                <% end %>
                 <p><%= d.items %></p>
               </div>
               <%= image_tag("icons/#{Type.find(d.type_id).name.downcase}.png", class: "type") %>
