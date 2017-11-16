@@ -18,6 +18,6 @@ class Conversation < ApplicationRecord
   end
 
   scope :between, -> (user, ngo) do
-    where("(conversations.user_id = ? AND conversations.ngo_id =?)", user.id, ngo.id)
+    where("(conversations.user_id = ? AND conversations.ngo_id =?)", user, ngo)
   end
 end
