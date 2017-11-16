@@ -1,6 +1,6 @@
 module MessagesHelper
   def self_or_other(message)
-    message.sender == @sender.class.to_s.downcase ? "self" : "other"
+    message.sender == @receiver.class.to_s.downcase ? "other" : "self"
   end
 
   def message_interlocutor(message)
