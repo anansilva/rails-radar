@@ -5,7 +5,7 @@
         <% unless ngo.photo.nil? %>
           <% photo_url = image_path ngo.photo %>
         <% else %>
-          <% photo_url = image_path "card_default" %>
+          <% photo_url = "http://res.cloudinary.com/dsmei8zni/image/upload/v1510934787/default.jpg" %>
         <% end %>
 
         <% string = "card " %>

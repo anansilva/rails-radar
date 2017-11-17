@@ -20,7 +20,6 @@ class DonationsController < ApplicationController
 
     if @donation.save
       respond_to do |format|
-
        format.html { redirect_to controller: "users", action: "show", id: "#{current_user.id}" }
        format.js
      end
@@ -28,18 +27,20 @@ class DonationsController < ApplicationController
     @type = Type.find(params[:donation][:type_id])
     respond_to do |format|
       format.html { render :new }
-      format.js  # <-- idem
+        format.js  # <-- idem
+      end
     end
   end
-end
 
+  def accept
+    Donation.find(params[:id]).update(status: 'accepted')
+  end
 
+  private
 
-private
-
-def donation_params
-  params.require(:donation).permit(:type_id, :schedule, :address, :items, :comments)
-end
+  def donation_params
+    params.require(:donation).permit(:type_id, :schedule, :address, :items, :comments)
+  end
 end
 
 
