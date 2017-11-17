@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # get 'users/:id', to: 'users#show'
 
-  resources :ngos, only: ['index', 'show', 'new', 'create'] do
+  resources :ngos do
       resources :donations, only: ['new', 'create', 'update', 'patch']
       resources :conversations do
         resources :messages
@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   get 'users/conversations/:id', controller: 'conversations', action: 'show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'ngos/:id/dashboard', to: 'ngos#dashboard'
+  get 'ngos/:id/unauthorized', to: 'ngos#unauthorized'
 end

@@ -1,20 +1,24 @@
-.hvr-grow {
+.banner-icons {
   position: sticky !important ;
   top: 69px !important;
+  width: 100%;
   z-index: 2;
   display: flex;
-  padding: 20px 50px 20px 50px;
+  padding: 20px 150px 20px 150px;
   justify-content: space-between;
   align-items: center;
   background-color: white;
+  box-shadow: 0 1px 20px 0 rgba(0,0,0,0.1),0 1px 0 0 rgba(0,0,0,0.03);
 }
 
-.hvr-grow:hover,
-.hvr-grow:focus,
-.hvr-grow:active {
-    transform: scale(1.1);
+.filter-icon {
+ transform: scale(0.95);
+ transition: all .2s ease-in-out;
+  &:hover {
+    transform: scale(1);
+  }
 }
 
-.banner-icons-type {
-
+.active {
+  border-bottom: 4px solid $orange;
 }
