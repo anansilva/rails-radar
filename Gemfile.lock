@@ -119,6 +119,8 @@ GEM
       activesupport (>= 4.2.0)
     gmaps4rails (2.1.2)
     hashie (3.5.6)
+    hover-rails (2.0.2)
+      railties (>= 3.2)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     http_parser.rb (0.6.0)
@@ -293,6 +295,7 @@ DEPENDENCIES
   font-awesome-sass
   geocoder
   gmaps4rails
+  hover-rails
   jbuilder (~> 2.0)
   jquery-rails
   listen (~> 3.0.5)
