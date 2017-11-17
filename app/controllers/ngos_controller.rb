@@ -51,7 +51,7 @@ class NgosController < ApplicationController
   end
 
   def dashboard
-    if current_user.ngo_id.to_s == params[:id]
+    # if current_user.ngo_id.to_s == params[:id]
       @user = current_user
       @ngo = Ngo.find(params[:id])
       @donations = @ngo.donations.reverse
@@ -62,9 +62,9 @@ class NgosController < ApplicationController
       end
 
       @users = @users.uniq.compact
-    else
-      redirect_to controller: 'ngos', action: 'unauthorized', id: params[:id]
-    end
+    # else
+    #   redirect_to controller: 'ngos', action: 'unauthorized', id: params[:id]
+    # end
   end
 
   def unauthorized
@@ -81,7 +81,7 @@ class NgosController < ApplicationController
   private
 
   def ngo_params
-    params.require(:ngo).permit(:user_id, :name, :address, :lat, :lng)
+    params.require(:ngo).permit(:user_id, :photo, :name, :address, :lat, :lng)
   end
 end
 
