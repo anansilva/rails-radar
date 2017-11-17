@@ -21,7 +21,8 @@
 
       <div class="messages">
         <table>
-        <% Ngo.all.each_with_index do |ngo, index| %>
+
+        <% @ngos.each_with_index do |ngo, index| %>
             <tr>
               <td><%= index +=1 %></td>
               <td><%= ngo.name %></td>

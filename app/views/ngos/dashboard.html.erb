@@ -9,19 +9,20 @@
         <% avatar_url = "http://placehold.it/200x200"%>
       <% end %>
       <div class="you">
-          <h3>You:</h3>
+          <h3>Your NGO:</h3>
       <div class="selfy">
         <%= image_tag avatar_url, class: 'profile-img' %>
 
 
         <h4> <%= @ngo.name %> </h4>
+        <%= button_to "Delete NGO", { controller: "ngos", action: "destroy" }, method: :delete %>
       </div>
       </div>
 
       <div class="messages">
         <h3>Messages:</h3>
         <table class="table">
-        <% User.all.each_with_index do |user, index| %>
+        <% @users.each_with_index do |user, index| %>
             <tr>
               <td><%= index +=1 %></td>
               <td><%= user.first_name %> <%= user.last_name %></td>
@@ -35,7 +36,7 @@
       </div>
 
       <div class="big donations">
-        <h3>Your donations:</h3>
+        <h3>Your donators:</h3>
         <div class="list">
           <% @donations.each do |d| %>
           <div class="card">
@@ -43,8 +44,11 @@
               <div class="content">
                 <h4><%= d.user.first_name %></h4>
                 <p><%= d.items %></p>
+                <p><%= d.created_at %></p>
               </div>
               <%= image_tag("icons/#{Type.find(d.type_id).name.downcase}.png", class: "type") %>
+              <%= button_to "Accept", 'donations#accept' %>
+              <%= button_to "Reject", 'donations#reject' %>
             </div>
 
             <% case d.status  %>
