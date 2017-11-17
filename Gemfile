@@ -17,6 +17,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-timepicker-rails-addon'
+gem 'hover-rails'
 
 group :development, :test do
   gem 'pry-byebug'

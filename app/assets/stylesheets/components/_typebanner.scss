@@ -1,4 +1,4 @@
-.banner-icons {
+.hvr-grow {
   position: sticky !important ;
   top: 69px !important;
   z-index: 2;
@@ -7,6 +7,12 @@
   justify-content: space-between;
   align-items: center;
   background-color: white;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+    transform: scale(1.1);
 }
 
 .banner-icons-type {
