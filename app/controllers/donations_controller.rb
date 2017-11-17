@@ -10,21 +10,28 @@ class DonationsController < ApplicationController
       marker.lat ngo.latitude
       marker.lng ngo.longitude
     end
-	end
+  end
 
-	def create
+  def create
     @ngo = Ngo.find(params[:ngo_id])
     @donation = Donation.new(donation_params)
     @donation.ngo = Ngo.find(params[:ngo_id])
     @donation.user = current_user
 
     if @donation.save
-     redirect_to controller: "users", action: "show", id: "#{current_user.id}"
+      respond_to do |format|
+
+       format.html { redirect_to controller: "users", action: "show", id: "#{current_user.id}" }
+       format.js
+     end
    else
-      @type = Type.find(params[:donation][:type_id])
-     render :new
-   end
- end
+    @type = Type.find(params[:donation][:type_id])
+    respond_to do |format|
+      format.html { render :new }
+      format.js  # <-- idem
+    end
+  end
+end
 
 
 

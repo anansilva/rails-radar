@@ -10,7 +10,7 @@
         <div class="description">
           <p><b>Who we are:</b></p>
           <p><b><%= @ngo.name %></b></p>
-          <p><%= @ngo.address %></p>
+          <p><%= @ngo.address.capitalize %></p>
           <hr class = "border-line"/>
           <p><b>Who we help:</b></p>
           <p><%= @ngo.description %></p>
@@ -44,37 +44,22 @@
             <p>Make your donation here<%= current_user.first_name.nil? ? " " : "," + current_user.first_name unless current_user.nil? %></p>
             <div class="row">
               <div class="donate-form form-group">
-                <%= form_tag(new_ngo_donation_path(ngo_id: @ngo.id), method: :get, class: "donation-form") do  %>
-                <!-- <div class="col-xs-3"> -->
 
-                  <%#= select_tag :type_id, options_for_select(@ngo.types.map{|t| t = t.name}), prompt: "Choose the type of donation you are giving", class: "form-control" %>
-                  <% @ngo.types.each do |t| %>
+              <%= render 'shared/ngo_show_donation_form' %>
 
-                  <%= radio_button_tag(:type_id, t.id) %>
-                  <%= label_tag(:type_id, t.name, class: "label-type-tag") %>
-
-                  <% end %>
-                  <!-- </div> -->
-                  <!-- <div class="col-xs-3"> -->
-                    <%= text_field_tag :date, nil, :class => "datepicker", :value => "Drop off/Pick up Date" %>
-                    <!-- </div> -->
-
-                    <%= submit_tag "Donate", class: "btn btn-primary"%>
-                    <% end %>
-
-                  </div>
-                </div>
               </div>
-            </div>
-
-
-
-            <div class="ngo-map">
-              <%= render 'shared/ngo_show_map' %>
             </div>
           </div>
         </div>
+
+
+
+        <div class="ngo-map">
+          <%= render 'shared/ngo_show_map' %>
+        </div>
       </div>
     </div>
+  </div>
+</div>
 
 
