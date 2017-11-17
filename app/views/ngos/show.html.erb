@@ -41,7 +41,7 @@
 
         <div class="ngo-donate">
           <div class="text-center">
-            <p>Make your donation here<%= current_user.first_name.nil? ? " " : "," + current_user.first_name unless current_user.nil? %></p>
+            <p>Make your donation here<%= current_user.first_name.nil? ? ": " : ", " + current_user.first_name unless current_user.nil? %></p>
             <div class="row">
               <div class="donate-form form-group">
 

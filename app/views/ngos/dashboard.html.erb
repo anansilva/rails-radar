@@ -47,8 +47,8 @@
                 <p><%= d.created_at %></p>
               </div>
               <%= image_tag("icons/#{Type.find(d.type_id).name.downcase}.png", class: "type") %>
-              <%= button_to "Accept", 'donations#accept' %>
-              <%= button_to "Reject", 'donations#reject' %>
+              <%= button_to "Accept", 'donations#accept', class: "btn btn-success" %>
+              <%= button_to "Reject", 'donations#reject', class: "btn btn-warning" %>
             </div>
 
             <% case d.status  %>
