@@ -1,0 +1,20 @@
+
+
+<%= form_tag(new_ngo_donation_path(ngo_id: @ngo.id), method: :get, class: "donation-form") do  %>
+
+<% @ngo.types.each do |t| %>
+<div class="ngo-type-donate-icons">
+<%= radio_button_tag(:type_id, t.id, :required => true) %>
+<%= label_tag(:type_id, image_tag("icons/#{t.name.downcase}.png"), class: "label-type-icon") %>
+<%= label_tag(:type_id, t.name, class: "label-type-text") %>
+</div>
+<% end %>
+
+
+<%= text_field_tag :date, nil, :class => "datepicker", :value => "Drop off/Pick up Date", :required => true %>
+
+<%= submit_tag "Donate", class: "btn btn-primary" %>
+
+
+<% end %>
+

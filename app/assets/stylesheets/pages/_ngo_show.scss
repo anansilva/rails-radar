@@ -9,10 +9,11 @@
       position: absolute;
       bottom: 10%;
       margin-left: 20px;
-      text-shadow: 3px 2px black;
+
 
       .ngo-title{
         color: white;
+        text-shadow: 2px 2px 5px black !important;
       }
       .ngo-quote{
         color: white;
@@ -41,105 +42,124 @@
 
       .donate-form{
         padding: 10px;
-        .label-type-tag{
-          padding: 10px;
-        }
-        .btn-primary{
-          padding: 10px;
-          margin: 10px;
-        }
-      }
-
-    }
-    .ngo-map{
-      border: 1px solid #e4e4e4 !important;
-      background-color: white;
-
-    }
-    .ngo-icons{
-      border: 1px solid #e4e4e4 !important;
-      background-color: white;
-
-      .icon-box{
         display: flex;
+        align-items: center;
+        justify-content: center;
 
-        .ngo-icon-item{
-          padding: 10px;
-          padding-right: 30px;
+        .donation-form{
+          text-align: center;
+          max-width: 50%;
+          align-self: flex-start;
+          .datepicker{
+            padding: 10px;
+          }
+
+          .label-type-icon{
+            padding: 5px;
+            img{
+              width: 50px;
+            }          }
+            .label-type-text{
+              padding: 0px;
+            }
+
+            .btn-primary{
+              padding: 10px;
+              margin: 10px;
+            }
+          }
+        }
+
+      }
+      .ngo-map{
+        border: 1px solid #e4e4e4 !important;
+        background-color: white;
+
+      }
+      .ngo-icons{
+        border: 1px solid #e4e4e4 !important;
+        background-color: white;
+
+        .icon-box{
+          display: flex;
+
+          .ngo-icon-item{
+            padding: 10px;
+            padding-right: 30px;
 
 
-          #ngo-icon-name{
-            opacity: 0.6;
-            font-size: 14px;
-            font-weight: lighter;
+            #ngo-icon-name{
+              opacity: 0.6;
+              font-size: 14px;
+              font-weight: lighter;
+            }
           }
         }
       }
     }
-  }
-  .grid-container{
-    display: flex;
-    position: relative;
-  }
-  @media only screen  and (min-width : 768px){
-    .grid{
-      display: grid;
-      grid-template-columns: 350px 1fr 1fr;
-      grid-template-rows: 50% 50%;
+    .grid-container{
+      display: flex;
+      position: relative;
+    }
+    @media only screen  and (min-width : 768px){
+      .grid{
+        display: grid;
+        grid-template-columns: 350px 1fr 1fr;
+        grid-template-rows: 50% 50%;
 
 
+        .description{
+          grid-row: 1/ span 1;
+          grid-column: 1/ span 2;
+          padding: 15px;
+          margin-right: 7px;
+        }
+
+        .ngo-donate{
+          grid-row: 1/ span 2;
+          grid-column: 3/ span 1;
+          height: 75vh;
+          padding: 15px;
+          top: 85px;
+          position: sticky !important;
+        }
+
+        .ngo-map{
+          grid-row: 2/ span 1;
+          grid-column: 1/ span 1;
+          padding: 15px;
+          margin-right: 7px;
+          margin-top: 7px;
+        }
+
+        .ngo-icons{
+          grid-row: 2/ span 1;
+          grid-column: 2/ span 1;
+          padding: 15px;
+          margin-top: 7px;
+          margin-right: 7px;
+          padding-left: 30px;
+          padding-right: 30px;
+        }
+      }
+    }
+
+    @media only screen and (min-width: 320px){
       .description{
-        grid-row: 1/ span 1;
-        grid-column: 1/ span 2;
-        padding: 15px;
-        margin-right: 7px;
+        margin-bottom: 10px;
+        padding: 10px;
       }
-
       .ngo-donate{
-        grid-row: 1/ span 2;
-        grid-column: 3/ span 1;
-        height: 50vh;
-        padding: 15px;
-        top: 85px;
-        position: sticky !important;
+        margin-bottom: 10px;
+        padding: 10px;
       }
-
-      .ngo-map{
-        grid-row: 2/ span 1;
-        grid-column: 1/ span 1;
-        padding: 15px;
-        margin-right: 7px;
-        margin-top: 7px;
-      }
-
       .ngo-icons{
-        grid-row: 2/ span 1;
-        grid-column: 2/ span 1;
-        padding: 15px;
-        margin-top: 7px;
-        margin-right: 7px;
-        padding-left: 30px;
-        padding-right: 30px;
+        margin-bottom: 10px;
+        padding: 10px;
+      }
+      .ngo-map{
+        margin-bottom: 10px;
+        padding: 10px;
       }
     }
   }
-
-  @media only screen and (min-width: 320px){
-    .description{
-      margin-bottom: 10px;
-      padding: 10px;
-    }
-    .ngo-donate{
-      margin-bottom: 10px;
-      padding: 10px;
-    }
-    .ngo-icons{
-      margin-bottom: 10px;
-      padding: 10px;
-    }
-    .ngo-map{
-      margin-bottom: 10px;
-      padding: 10px;
-    }
-  }
-}
