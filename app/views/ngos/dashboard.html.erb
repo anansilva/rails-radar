@@ -22,7 +22,7 @@
       <div class="messages">
         <h3>Messages:</h3>
         <table class="table">
-        <% User.all.each_with_index do |user, index| %>
+        <% @users.each_with_index do |user, index| %>
             <tr>
               <td><%= index +=1 %></td>
               <td><%= user.first_name %> <%= user.last_name %></td>
@@ -44,8 +44,11 @@
               <div class="content">
                 <h4><%= d.user.first_name %></h4>
                 <p><%= d.items %></p>
+                <p><%= d.created_at %></p>
               </div>
               <%= image_tag("icons/#{Type.find(d.type_id).name.downcase}.png", class: "type") %>
+              <%= button_to "Accept", 'donations#accept' %>
+              <%= button_to "Reject", 'donations#reject' %>
             </div>
 
             <% case d.status  %>

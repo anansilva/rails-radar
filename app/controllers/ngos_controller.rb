@@ -55,6 +55,13 @@ class NgosController < ApplicationController
       @user = current_user
       @ngo = Ngo.find(params[:id])
       @donations = @ngo.donations.reverse
+      @users =[]
+
+      @donations.each do |d|
+        @users.push(User.find(d.user_id))
+      end
+
+      @users = @users.uniq.compact
     else
       redirect_to controller: 'ngos', action: 'unauthorized', id: params[:id]
     end
