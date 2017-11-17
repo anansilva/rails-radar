@@ -3,6 +3,7 @@
   display: flex;
   margin-top: 40px;
   margin-right: 35px;
+  padding: 30px;
 
   .card {
     height: 150px;
@@ -19,6 +20,18 @@
     transition: all 0.5s ease;
 
     display: flex;
+
+    .card-footer {
+      flex: 1 0 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      img {
+        max-height: 30px;
+        flex: 1 1 auto;
+      }
+    }
 
     p {
       color: black;
@@ -47,14 +60,17 @@
       flex: 1 1 auto;
       margin: 10px 15px;
 
-        h5 {
-          font-weight: 700;
-          color: black;
-        }
+      h5 {
+        font-weight: 700;
+        color: black;
       }
     }
   }
+}
 
 a:hover {
   text-decoration: none !important;
 }
+
+
+
