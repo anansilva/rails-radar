@@ -12,7 +12,7 @@
         <div class="box">
           <h2>Confirm your Donation</h2>
           <%= simple_form_for [@ngo, @donation] do |f|  %>
-          <%= Type.find(params[:type_id]).name %>
+          <%= @type.name %>
           <p><br>And provide us following information please:</p>
           <%= f.input :items %>
           <%= f.input :comments %>

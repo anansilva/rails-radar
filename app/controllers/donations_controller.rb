@@ -4,6 +4,7 @@ class DonationsController < ApplicationController
   def new
     @ngo = Ngo.find(params[:ngo_id])
     @donation = Donation.new
+    @type = Type.find(params[:type_id])
 
     @hash = Gmaps4rails.build_markers(@ngo) do |ngo, marker|
       marker.lat ngo.latitude
@@ -20,6 +21,7 @@ class DonationsController < ApplicationController
     if @donation.save
      redirect_to controller: "users", action: "show", id: "#{current_user.id}"
    else
+      @type = Type.find(params[:donation][:type_id])
      render :new
    end
  end
