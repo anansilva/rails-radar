@@ -8,8 +8,16 @@ class NgosController < ApplicationController
     @user = current_user
     @ngo = Ngo.new(ngo_params)
 
+    types = params[:ngo][:type_ids]
+    size = params[:ngo][:type_ids].size
+
     if @ngo.save
       @user.update(ngo_id: @ngo.id)
+
+      (1...size).each do |t|
+        a = NgoType.create(ngo_id: @ngo.id, type_id: types[t])
+      end
+
       redirect_to controller: "ngos", action: "dashboard", id: "#{@ngo.id}"
     else
       render :new
@@ -43,15 +51,30 @@ class NgosController < ApplicationController
   end
 
   def dashboard
+    if current_user.ngo_id.to_s == params[:id]
+      @user = current_user
+      @ngo = Ngo.find(params[:id])
+      @donations = @ngo.donations.reverse
+    else
+      redirect_to controller: 'ngos', action: 'unauthorized', id: params[:id]
+    end
+  end
+
+  def unauthorized
     @user = current_user
     @ngo = Ngo.find(params[:id])
-    @donations = @ngo.donations.reverse
+  end
+
+  def destroy
+    ngo = Ngo.find(params[:id])
+    ngo.destroy
+    redirect_to controller: 'users', action: 'show', id: current_user.id
   end
 
   private
 
   def ngo_params
-    params.require(:ngo).permit(:user_id, :name, :address, :types, :lat, :lng)
+    params.require(:ngo).permit(:user_id, :name, :address, :lat, :lng)
   end
 end
 

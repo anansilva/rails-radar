@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   # Database relationships
   has_many :donations
-  has_one :ngo
+  has_one :ngo, dependent: :nullify
   has_many :conversations
 
 

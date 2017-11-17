@@ -3,6 +3,7 @@ class Ngo < ApplicationRecord
   has_many :types, through: :ngo_types
   has_many :donations
   has_many :conversations
+  has_many :users, dependent: :nullify
 
   validates :name, presence: true
   validates :address, presence: true
