@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title><%= yield(:title).nil? ? "radar" : yield(:title) %></title>
-    <%= csrf_meta_tags %>
-    <%= action_cable_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <meta content='<%= controller_name == "ngos" ? "ngo" : "user" %>' name='class'/>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title><%= yield(:title).nil? ? "radar" : yield(:title) %></title>
+  <!-- Facebook -->
+  <meta property="og:title" content="Radar: Connecting People with NGOs">
+  <meta property="og:image" content="https://s3-eu-west-1.amazonaws.com/medi-co/uploads/rails-radar-og-img.png">
+  <meta property="og:description" content="Radar helps you find the right NGO for your donation">
+  <meta property="og:site_name" content="Radar"/>
+  <meta property="og:url" content="https://radar-lewagon.herokuapp.com/"/>
+  <meta property="og:type" content="website"/>
 
-  </head>
-  <body>
-    <%= render 'shared/navbar' %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+  <%= csrf_meta_tags %>
+  <%= action_cable_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <meta content='<%= controller_name == "ngos" ? "ngo" : "user" %>' name='class'/>
+
+</head>
+<body>
+  <%= render 'shared/navbar' %>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <%= yield %>
 
 
-    <%= javascript_include_tag "https://maps.google.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
-    <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/markerclusterer/src/markerclusterer_compiled.js" %>
-    <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" %>
+  <%= javascript_include_tag "https://maps.google.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
+  <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/markerclusterer/src/markerclusterer_compiled.js" %>
+  <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" %>
 
-    <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "application" %>
 
-    <%= yield(:after_js) %>
+  <%= yield(:after_js) %>
 
-  </body>
+</body>
 </html>
